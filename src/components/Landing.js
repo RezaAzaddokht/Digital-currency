@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getApi } from '../services/api';
+import Loader from './Loader';
 
 const Landing = () => {
 
@@ -14,12 +15,20 @@ const Landing = () => {
     } , [])
 
     return (
-        <div>
+        <>
             <input type='text' placeholder='Search' />
             {
-                coin.map(item => <p>{item.name}</p> )
+                coin.length ? 
+                <div>
+                    {
+                        coin.map(item => <p>{item.name}</p> )
+                    }
+                </div> :
+                <Loader />
             }
-        </div>
+            
+            
+        </>
     );
 }
  
