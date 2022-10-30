@@ -8,6 +8,7 @@ import Loader from './Loader';
 const Landing = () => {
 
     const [coin , setCoin] = useState([]);
+    const [search , setSearch] = useState("");
 
     useEffect(() => {
         const fetchApi = async () => {
@@ -17,14 +18,20 @@ const Landing = () => {
         fetchApi();
     } , [])
 
+    const searchHandler = event => {
+        setSearch(event.target.value)
+    }
+
+    const searchFilter = coin.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
+
     return (
         <>
-            <input type='text' placeholder='Search' />
+            <input type='text' placeholder='Search' value={search} onChange={searchHandler} />
             {
                 coin.length ? 
                 <div>
                     {
-                        coin.map(item => <Coin key={item.id}
+                        searchFilter.map(item => <Coin key={item.id}
                                                name={item.name}
                                                symbol={item.symbol}
                                                image={item.image}
