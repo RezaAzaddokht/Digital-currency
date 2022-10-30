@@ -48,3 +48,11 @@
 .greenPrice{
     color: rgb(33, 166, 33);
 }
+
+
+@media screen and (max-width:600px) {
+    .container{
+        padding: 15px 10px;
+        font-size: 10px;
+    }
+}
