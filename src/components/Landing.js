@@ -15,7 +15,10 @@ const Landing = () => {
 
     return (
         <div>
-
+            <input type='text' placeholder='Search' />
+            {
+                coin.map(item => <p>{item.name}</p> )
+            }
         </div>
     );
 }
